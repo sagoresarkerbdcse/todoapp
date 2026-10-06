@@ -2,7 +2,7 @@
 
 A lightweight todo app built with plain HTML, CSS, and JavaScript — no build step, no dependencies.
 
-**Live demo:** https://sagoresarkerbdcse.github.io/todoapp/ (after GitHub Pages is enabled, see below)
+**Live demo:** https://sagoresarkerbdcse.github.io/todoapp/
 
 ## Features
 
@@ -24,13 +24,10 @@ python3 -m http.server 8000
 
 ## Deploy to GitHub Pages
 
-The workflow in `.github/workflows/pages.yml` publishes the site on every push to `main`.
+`.github/workflows/pages.yml` copies the site files to the `gh-pages` branch on every push to `main`
+(or the current default branch), and GitHub Pages serves that branch.
 
-One-time setup:
+If the site isn't live, open **Settings → Pages** and set **Source** to *Deploy from a branch*,
+branch `gh-pages`, folder `/ (root)`.
 
-1. Merge this code into `main`.
-2. In the repository, go to **Settings → Pages**.
-3. Under **Build and deployment → Source**, choose **GitHub Actions**.
-4. Re-run the workflow (Actions → *Deploy to GitHub Pages* → *Run workflow*) or push to `main`.
-
-The site will be available at `https://<your-username>.github.io/todoapp/`.
+Live at `https://sagoresarkerbdcse.github.io/todoapp/`.
