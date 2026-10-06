@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Todo App</title>
+  <meta name="description" content="A simple, fast todo app that saves to your browser.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem("todoapp.theme"); } catch (e) {}
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Todos</h1>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+    </header>
+
+    <form id="new-todo-form" class="new-todo" autocomplete="off">
+      <label for="new-todo-input" class="visually-hidden">New todo</label>
+      <input id="new-todo-input" type="text" placeholder="What needs to be done?" maxlength="200" required>
+      <button type="submit" class="primary-btn">Add</button>
+    </form>
+
+    <section class="toolbar" aria-label="Filters">
+      <div class="filters" role="tablist">
+        <button type="button" class="filter active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button type="button" class="filter" data-filter="active" role="tab" aria-selected="false">Active</button>
+        <button type="button" class="filter" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+      </div>
+      <button type="button" id="toggle-all" class="link-btn">Mark all done</button>
+    </section>
+
+    <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+    <p id="empty-state" class="empty-state" hidden>Nothing here yet. Add your first todo above.</p>
+
+    <footer class="app-footer">
+      <span id="items-left">0 items left</span>
+      <button type="button" id="clear-completed" class="link-btn">Clear completed</button>
+    </footer>
+
+    <p class="hint">Double-click a todo to edit. Your list is saved in this browser.</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
